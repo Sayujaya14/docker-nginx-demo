@@ -1,9 +1,25 @@
 services:
-  backend:
+  backend1:
     build:
       context: .
       dockerfile: Dockerfile.backend
-    container_name: backend
+    container_name: backend1
+    networks:
+      - my-app-network
+
+  backend2:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: backend2
+    networks:
+      - my-app-network
+
+  backend3:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: backend3
     networks:
       - my-app-network
 
@@ -15,7 +31,9 @@ services:
     ports:
       - "8080:80"
     depends_on:
-      - backend
+      - backend1
+      - backend2
+      - backend3
     networks:
       - my-app-network
 
