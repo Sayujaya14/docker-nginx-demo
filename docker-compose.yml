@@ -1,0 +1,24 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: backend
+    networks:
+      - my-app-network
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    container_name: nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - my-app-network
+
+networks:
+  my-app-network:
+    driver: bridge

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nginx Demo</title>
+</head>
+<body>
+  <h1>Frontend Running</h1>
+
+  <button onclick="loadData()">Call Backend</button>
+
+  <script>
+    async function loadData() {
+      const res = await fetch('/api');
+      const text = await res.text();
+      alert(text);
+    }
+  </script>
+</body>
+</html>
