@@ -7,6 +7,6 @@ COPY app.js .
 RUN npm init -y
 RUN npm install express
 
-EXPOSE 3000
+EXPOSE 3001
 
 CMD ["node", "app.js"]

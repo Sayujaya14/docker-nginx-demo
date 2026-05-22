@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Nginx Demo</title>
+  <title>Microservices UI</title>
 </head>
 <body>
-  <h1>Frontend Running</h1>
+  <h1>Microservices Dashboard</h1>
 
-  <button onclick="loadData()">Call Backend</button>
+  <button onclick="callApi('/auth/')">Call Auth Service</button>
+  <button onclick="callApi('/products/')">Call Product Service</button>
+  <button onclick="callApi('/orders/')">Call Order Service</button>
+
+  <pre id="output">Click a button...</pre>
 
   <script>
-    async function loadData() {
-      const res = await fetch('/api');
-      const text = await res.text();
-      alert(text);
+    async function callApi(path) {
+      const res = await fetch(path);
+      const data = await res.json();
+      document.getElementById("output").textContent =
+        JSON.stringify(data, null, 2);
     }
   </script>
 </body>
